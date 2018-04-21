@@ -29,6 +29,7 @@ public class RNSmsAndroidModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void sms(String phoneNumberString, String message, Callback callback) {
     try {
+      RNSmsAndroidModule.validateTextMessage(message);
       SmsManager smsManager = SmsManager.getDefault();
       smsManager.sendTextMessage(phoneNumberString, null, message, null, null);
       callback.invoke(null, "success");
@@ -40,7 +41,7 @@ public class RNSmsAndroidModule extends ReactContextBaseJavaModule {
     }
   }
 
-  public static void validateTextMessage(String message){
+  public static void validateTextMessage(String message) throws Exception {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
       throw new Exception("Android version must be atleast KitKat");
     }
