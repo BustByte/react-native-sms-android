@@ -1,9 +1,5 @@
 package com.rhaker.reactnativesmsandroid;
 
-import android.app.Activity;
-
-import java.util.*;
-
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
