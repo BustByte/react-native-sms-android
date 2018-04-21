@@ -2,6 +2,7 @@ package com.rhaker.reactnativesmsandroid;
 
 import android.os.Build;
 import android.telephony.SmsManager;
+import java.lang.*;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -43,8 +44,8 @@ public class RNSmsAndroidModule extends ReactContextBaseJavaModule {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
       throw new Exception("Android version must be atleast KitKat");
     }
-    if(message == null || message.isEmpty()){
-      throw new IllegalArgumentException("Message cannot be empty")
+    if (message == null || message.isEmpty()){
+      throw new IllegalArgumentException("Message cannot be empty");
     }
   }
 }
