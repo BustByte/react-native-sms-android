@@ -92,7 +92,7 @@ public class RNSmsAndroidModule extends ReactContextBaseJavaModule {
         if (smsResultsHandler.isAllMessagesSent()){
           final String errorMessages = smsResultsHandler.getErrorMessagesAsString();
           if (errorMessages == null){
-            callback.invoke("SMS sent successfully", "success");
+            callback.invoke(null, "SMS sent successfully");
           } else {
             callback.invoke(errorMessages, "error");
           }
