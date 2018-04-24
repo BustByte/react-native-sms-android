@@ -73,16 +73,25 @@ public class RNSmsAndroidModule extends ReactContextBaseJavaModule {
             case Activity.RESULT_OK:
               break;
             case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-              smsResultsHandler.addErrorMessage("Service is currently unavailable");
+              smsResultsHandler.addErrorMessage("Generic failure cause.");
+              break;
+            case SmsManager.RESULT_ERROR_LIMIT_EXCEEDED:
+              smsResultsHandler.addErrorMessage("Failed because we reached the sending queue limit.");
               break;
             case SmsManager.RESULT_ERROR_NO_SERVICE:
-              smsResultsHandler.addErrorMessage("Service is currently unavailable");
+              smsResultsHandler.addErrorMessage("Failed because service is currently unavailable.");
               break;
             case SmsManager.RESULT_ERROR_NULL_PDU:
-              smsResultsHandler.addErrorMessage("No pdu provided");
+              smsResultsHandler.addErrorMessage("Failed because no pdu provided.");
               break;
             case SmsManager.RESULT_ERROR_RADIO_OFF:
-              smsResultsHandler.addErrorMessage("Radio was explicitly turned off");
+              smsResultsHandler.addErrorMessage("Failed because radio was explicitly turned off.");
+              break;
+            case SmsManager.RESULT_ERROR_SHORT_CODE_NEVER_ALLOWED:
+              smsResultsHandler.addErrorMessage("Failed because the user has denied this app ever send premium short codes.");
+              break;
+            case SmsManager.RESULT_ERROR_SHORT_CODE_NOT_ALLOWED:
+              smsResultsHandler.addErrorMessage("Failed because user denied the sending of this short code.");
               break;
             default:
               smsResultsHandler.addErrorMessage("Something went wrong.");
